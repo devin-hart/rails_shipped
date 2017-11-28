@@ -10,6 +10,7 @@
   <%= boat.name %>
   <%= boat.location %>
   <%= boat.containers %>
+  <%= image_tag boat.avatar.url(:thumb) %>
   <%= link_to 'See', boat_path(boat) %>
 <% if current_user.id == boat.user_id %>
 <%= link_to 'Edit', edit_boat_path(boat) %>
