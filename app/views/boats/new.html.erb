@@ -1,7 +1,21 @@
 <h1>Boats#new</h1>
 
+<% if @boat.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@boat.errors.count, "error") %> prohibited
+        this boat from being saved:
+      </h2>
+      <ul>
+        <% @boat.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_for boats_new_path do |f| %>
+
+<%= form_for @boat do |f| %>
 <h4> Name </h4>
 <%= f.text_field :name%>
 <h4> Location </h4>

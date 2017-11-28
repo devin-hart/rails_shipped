@@ -1,5 +1,19 @@
 <h1>Boats#edit</h1>
 
+<% if @boat.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@boat.errors.count, "error") %> prohibited
+        this boat from being saved:
+      </h2>
+      <ul>
+        <% @boat.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 
 <%= form_for @boat do |f| %>
 <h4> Name </h4>
@@ -7,7 +21,7 @@
 <h4> Location </h4>
 <%= f.text_field :location%>
 <h4> Containers Available </h4>
-<%= f.integer :containers %>
+<%= f.number_field :containers %>
 <br>
 <%= f.submit %>
 <% end %>
