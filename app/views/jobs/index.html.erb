@@ -1,2 +1,21 @@
 <h1>Jobs#index</h1>
 <p>Find me in app/views/jobs/index.html.erb</p>
+
+<% if @jobs.empty? %>
+  <p> No boats yet </p>
+  <% end %>
+
+<% @jobs.each do |p| %>
+<ul>
+  <li><%= link_to p.created_at, p %>
+    <% if current_user.id == p.user_id %>
+    <%= link_to 'Edit', edit_job_path(p) %>
+    <%= link_to 'Delete', job_path(p),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </li>
+</ul>
+<% end %>
+
+<%= link_to 'New Job', new_job_path%>
