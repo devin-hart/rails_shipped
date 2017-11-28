@@ -8,8 +8,8 @@
 <% @jobs.each do |p| %>
 <ul>
   <li><%= link_to p.created_at, p %>
-    <% if current_user.id == p.user_id %>
     <%= link_to 'Edit', edit_job_path(p) %>
+    <% if current_user.id == p.user_id %>
     <%= link_to 'Delete', job_path(p),
             method: :delete,
             data: { confirm: 'Are you sure?' } %>
