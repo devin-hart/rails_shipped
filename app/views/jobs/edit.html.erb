@@ -16,6 +16,7 @@
   <% end %>
 
 <%= form_for @job do |f| %>
+<% if current_user.id == @job.user_id %>
   <h4> Job </h4>
   <%= f.text_area :description, :minlength => 50%>
   <h4> Origin </h4>
@@ -26,6 +27,7 @@
   <%= f.number_field :cost, :min => 1000%>
   <h4> Containers </h4>
   <%= f.number_field :containers%>
+  <% end %>
   <h4> Boats Available For Job </h4>
   <%= collection_check_boxes(:job, :boat_ids, Boat.all, :id, :name)%>
   <br>
