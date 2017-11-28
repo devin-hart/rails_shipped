@@ -17,14 +17,14 @@
 
 <%= form_for @job do |f| %>
   <h4> Job </h4>
-  <%= f.text_area :description%>
+  <%= f.text_area :description, :minlength => 50%>
   <h4> Origin </h4>
   <%= f.text_field :origin%>
   <h4> Destination </h4>
   <%= f.text_field :destination%>
   <h4> Cost </h4>
-  <%= f.text_field :cost%>
+  <%= f.number_field :cost, :min => 1000%>
   <h4> Containers </h4>
-  <%= f.text_field :containers%>
+  <%= f.number_field :containers%>
   <%= f.submit %>
 <% end %>
