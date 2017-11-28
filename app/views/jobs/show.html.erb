@@ -3,8 +3,15 @@
 <h4>Containers Needed for This Job:</h4>
 <%= @job.containers %>
 
-<h4>Add a Boat to this Job:</h4>
-<%= render 'form' %>
+<h4>Boats on this Job</h4>
+  <ul>
+    <% @job.boats.each do |boat| %>
+      <li> <%= boat.name %></li>
+      <li> <%= boat.containers %></li>
+      <li>Containers Still Needed:
+      <%= (@job.containers - boat.containers) %></li>
+    <% end %>
+  </ul>
 
 <h3>Job Description</h3>
 <%= @job.description %>

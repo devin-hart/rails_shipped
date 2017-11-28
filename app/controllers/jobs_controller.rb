@@ -11,6 +11,7 @@ class JobsController < ApplicationController
 
   def edit
     find_params
+    @boats = Boat.all
   end
 
   def new
@@ -26,6 +27,15 @@ class JobsController < ApplicationController
     end
   end
 
+  def update
+    @job = Job.find_by_id(params[:id])
+    if @job.update(job_params)
+      redirect_to @job
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
     find_params
     @job.destroy
@@ -35,7 +45,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:description, :origin, :destination, :cost, :containers )
+    params.require(:job).permit(:description, :origin, :destination, :cost, :containers, :boat_ids)
   end
 
   def find_params
