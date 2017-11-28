@@ -6,7 +6,7 @@ class BoatsController < ApplicationController
   end
 
   def show
-    @boat = Boat.find_by(params[:id])
+    @boat = Boat.find_by_id(params[:id])
   end
 
   def new
@@ -38,6 +38,10 @@ class BoatsController < ApplicationController
 
 
   def destroy
+    find_params
+    @boat.destroy
+
+    redirect_to @boat
   end
 
   private
@@ -47,7 +51,7 @@ class BoatsController < ApplicationController
   end
 
   def find_params
-    @boat = Boat.find_by(params[:id])
+    @boat = Boat.find_by_id(params[:id])
   end
 
 end

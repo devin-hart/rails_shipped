@@ -19,7 +19,7 @@
 <h4> Name </h4>
 <%= f.text_field :name%>
 <h4> Location </h4>
-<%= f.text_field :location%>
+<%= f.select :location, ['Philadelphia', 'New York', 'Boston', 'Miami', 'Portland']%>
 <h4> Containers Available </h4>
 <%= f.number_field :containers %>
 <br>

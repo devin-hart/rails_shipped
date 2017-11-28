@@ -1,5 +1,15 @@
 <h1>Boats#show</h1>
 
-<%= @boat.name %>
-<%= @boat.location%>
-<%= @boat.containers%>
+<p>Name:</p>
+<i><%= @boat.name %></i>
+<p>Location:</p>
+<i><%= @boat.location%></i>
+<p>Number of Available Containers:</p>
+<i><%= @boat.containers%></i>
+
+<% if current_user.id == @boat.user_id %>
+<%= link_to 'Edit', edit_boat_path(@boat) %>
+<%= link_to 'Delete', boat_path(@boat),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+<% end %>
