@@ -10,7 +10,7 @@
 <h4>Jobs</h4>
   <ul>
     <% @boat.jobs.each do |job| %>
-      <li> <%= link_to job.created_at, job_path%></li>
+      <li> <%= link_to job.created_at, job_path(job) %></li>
     <% end %>
   </ul>
 
