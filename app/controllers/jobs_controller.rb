@@ -45,7 +45,7 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:description, :origin, :destination, :cost, :containers, :boat_ids)
+    params.require(:job).permit(:description, :origin, :destination, :cost, :containers, :boat_ids, boat_ids:[])
   end
 
   def find_params
