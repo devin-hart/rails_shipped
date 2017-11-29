@@ -1,4 +1,4 @@
-<h1>Jobs#show</h1>
+<h1>This Job</h1>
 
 <h4>Containers Needed for This Job:</h4>
 <%= @job.containers %>
@@ -19,7 +19,18 @@
   <p> Total Boat Containers: </p>
   <%= @all %>
   <p> Containers Still Needed: </p>
+  <% if @containers_needed < 0 %>
+  <p> 0 </p>
+  <% else %>
   <%= @containers_needed %>
+  <% end %>
+
+  <h3>Job Status: </h3>
+  <% if @containers_needed < 0 %>
+  <p> Completed ✅ </p>
+  <% else %>
+  <p> Boats Still Needed ⛵ </p>
+  <% end %>
 
 
 <h3>Job Description</h3>
@@ -32,11 +43,8 @@
 <%= @job.destination %>
 <br>
 <h3>Job Cost</h3>
-<%= @job.cost %>
+<%= @job.cost %> 💰
 <br>
-<h3>Job Containers</h3>
-<%= @job.containers %>
-
 
 <% if @containers_needed > 0 %>
 <!-- if the boats have enough containers for the job, you can't add any more boats -->

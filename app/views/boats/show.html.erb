@@ -1,4 +1,4 @@
-<h1>Boats#show</h1>
+<h1>This Boat</h1>
 
 <p>Name:</p>
 <i><%= @boat.name %></i>
@@ -8,6 +8,9 @@
 <i><%= @boat.containers%></i>
 
 <h4>Jobs</h4>
+<% if @boat.jobs.empty? %>
+<p>No Jobs Yet</p>
+<% end %>
   <ul>
     <% @boat.jobs.each do |job| %>
       <li> <%= link_to job.created_at, job_path(job) %></li>
