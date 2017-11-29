@@ -6,12 +6,21 @@
 <h4>Boats on this Job</h4>
   <ul>
     <% @job.boats.each do |boat| %>
-      <li> <%= boat.name %></li>
-      <li> <%= boat.containers %></li>
-      <li>Containers Still Needed:
-      <%= (@job.containers - boat.containers) %></li>
+      <li> <%= boat.name %> will supply <%= boat.containers %> containers</li>
     <% end %>
   </ul>
+  <% @jobcontainers = @job.containers %>
+  <% @all = 0; %>
+  <% @job.boats.each do |boat| %>
+    <% @all = @all + boat.containers %>
+  <% end %>
+  <% @containers_needed = @jobcontainers - @all %>
+
+  <p> Total Boat Containers: </p>
+  <%= @all %>
+  <p> Containers Still Needed: </p>
+  <%= @containers_needed %>
+
 
 <h3>Job Description</h3>
 <%= @job.description %>
@@ -22,17 +31,18 @@
 <h3>Job Destination</h3>
 <%= @job.destination %>
 <br>
-<h3>Job Origin</h3>
-<%= @job.origin %>
-<br>
 <h3>Job Cost</h3>
 <%= @job.cost %>
 <br>
 <h3>Job Containers</h3>
 <%= @job.containers %>
 
-<% if current_user.id == @job.user_id %>
+
+<% if @containers_needed > 0 %>
+<!-- if the boats have enough containers for the job, you can't add any more boats -->
 <%= link_to 'Edit', edit_job_path(@job) %>
+<% end %>
+<% if current_user.id == @job.user_id %>
 <%= link_to 'Delete', job_path(@job),
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
