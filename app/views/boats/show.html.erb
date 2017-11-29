@@ -7,6 +7,14 @@
 <p>Number of Available Containers:</p>
 <i><%= @boat.containers%></i>
 
+<h4>Jobs</h4>
+  <ul>
+    <% @boat.jobs.each do |job| %>
+      <li> <%= link_to job.created_at, job_path%></li>
+    <% end %>
+  </ul>
+
+
 <% if current_user.id == @boat.user_id %>
 <%= link_to 'Edit', edit_boat_path(@boat) %>
 <%= link_to 'Delete', boat_path(@boat),
