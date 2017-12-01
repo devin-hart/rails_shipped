@@ -1,15 +1,17 @@
 <h1>This Boat</h1>
 
-<p>Name:</p>
+<h3>Name:</h3>
 <i><%= @boat.name %></i>
-<p>Location:</p>
+<h3>Location:</h3>
 <i><%= @boat.location%></i>
-<p>Number of Available Containers:</p>
+<h3>Number of Available Containers:</h3>
 <i><%= @boat.containers%></i>
+<br>
+<%= image_tag @boat.avatar.url(:medium) %>
 
-<h4>Jobs</h4>
+<h4>Jobs:</h4>
 <% if @boat.jobs.empty? %>
-<p>No Jobs Yet</p>
+<h3>No Jobs Yet</h3>
 <% end %>
   <ul>
     <% @boat.jobs.each do |job| %>

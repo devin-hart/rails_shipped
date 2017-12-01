@@ -14,6 +14,7 @@
     </div>
   <% end %>
 
+
 <%= form_for @job do |f| %>
 <% if current_user.id == @job.user_id %>
   <h4> Job </h4>
@@ -30,6 +31,10 @@
   <h4> Boats Available For Job </h4>
   <%= collection_check_boxes(:job, :boat_ids, current_user.boats, :id, :name, checked: true)%>
   <br>
+  <% if current_user.boats.empty? %>
+  <p>Uh oh! You don't have any boats to add to this job.</p>
+  <% else %>
   <br>
   <%= f.submit %>
+  <% end %>
 <% end %>
