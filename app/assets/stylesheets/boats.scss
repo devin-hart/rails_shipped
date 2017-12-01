@@ -15,3 +15,7 @@ H1{
   text-decoration: underline;
   font-family: 'Lato', sans-serif;
 }
+
+H2{
+text-decoration-color: red($color);
+}
