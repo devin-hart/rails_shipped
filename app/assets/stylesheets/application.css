@@ -27,7 +27,9 @@
      }
 
 H1{
-  text: bold
+  text-decoration: uppercase;
+  text-decoration: underline;
+  font-family: 'Lato', sans-serif;
 }
 A{
   text-decoration-color: Black
