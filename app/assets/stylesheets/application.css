@@ -24,6 +24,9 @@
        color: black;
      }
 
+H1{
+  text: bold
+}
 A{
   text-decoration-color: Black
 }
