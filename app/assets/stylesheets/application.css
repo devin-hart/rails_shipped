@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  
 
 
@@ -39,4 +40,5 @@ h2 {
 
 ul {
   list-style-type: none;
+
 }

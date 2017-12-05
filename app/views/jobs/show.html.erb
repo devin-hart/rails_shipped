@@ -48,7 +48,7 @@
 
 <% if @containers_needed > 0 %>
 <!-- if the boats have enough containers for the job, you can't add any more boats -->
-<%= link_to 'Edit', edit_job_path(@job) %>
+<%= link_to 'Add a Boat', edit_job_path(@job) %>
 <% end %>
 <% if current_user.id == @job.user_id %>
 <%= link_to 'Delete', job_path(@job),

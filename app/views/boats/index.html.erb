@@ -1,24 +1,28 @@
 <h1>All ya Boats ⛵</h1>
 
 <% if @boats.empty? %>
-  <p> No boats yet </p>
+  <h3> No boats yet </h3>
   <% end %>
 
 
 <% @boats.each do |boat| %>
-<ul>
+  <h3>Name: </h3>
   <%= boat.name %>
+  <h3>Location: </h3>
   <%= boat.location %>
+  <h3>Containers Available: </h3>
   <%= boat.containers %>
+  <h3>Boat: </h3>
   <%= image_tag boat.avatar.url(:thumb) %>
+  <br>
   <%= link_to 'See', boat_path(boat) %>
 <% if current_user.id == boat.user_id %>
 <%= link_to 'Edit', edit_boat_path(boat) %>
 <%= link_to 'Delete', boat_path(boat),
         method: :delete,
         data: { confirm: 'Are you sure?' } %>
+        <br>
 <% end %>
-</ul>
 <% end %>
 
 <%= link_to 'New Boat', boats_new_path%>
